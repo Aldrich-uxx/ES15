@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Wares {
+            constructor(price) {
+                this.price = price;
+            }
+            amount(num) {
+                return (num * this.price).toFixed(2);
+            }
+        }
+        class DisWares  extends Wares {
+            constructor(price, discount) {
+                super(price);
+                this.discount = discount;
+            }
+            disamount(num) {
+                let s = super.amount(num);
+                return (s * this.discount).toFixed(2);
+            }
+        }
+        let [price, discount, num] = [1234.56, 0.9, 10];
+        let ware = new DisWares(price, discount);
+        console.log(`购买${num}件商品,单价${price},合计${ware.amount(num)}`);
+        console.log(`打${discount * 10}折后, 实收金额为${ware.disamount(num)}`);
+    </script>
+</body>
+</html>
